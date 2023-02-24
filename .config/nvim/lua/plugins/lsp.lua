@@ -19,29 +19,23 @@ return {
     opts = {
       ---@type lspconfig.options
       servers = {
-        solargraph = {},
-      },
-      setup = {
-        solargraph = function(_, opts)
-          require("lspconfig").solargraph.setup({
-            filetypes = { "ruby", "rakefile" },
-            cmd = { "/Users/daniel/.rbenv/shims/solargraph", "stdio" },
-            settings = {
-              solargraph = {
-                autoformat = true,
-                formatting = true,
-                completion = true,
-                definition = true,
-                hover = true,
-                diagnostic = true,
-                folding = true,
-                references = true,
-                rename = true,
-                symbols = true,
-              },
+        solargraph = {
+          cmd = { "/Users/daniel/.rbenv/shims/solargraph", "stdio" },
+          settings = {
+            solargraph = {
+              autoformat = false,
+              formatting = false,
+              completion = true,
+              definition = true,
+              hover = true,
+              diagnostic = true,
+              folding = true,
+              references = true,
+              rename = true,
+              symbols = true,
             },
-          })
-        end,
+          },
+        },
       },
     },
   },
