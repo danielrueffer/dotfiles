@@ -115,3 +115,4 @@ alias dcrails='docker-compose run --rm rails'
 alias dcbundle='docker-compose run --rm bundle'
 alias dcracksh='docker-compose run --rm web racksh'
 
+eval "$(starship init zsh)"
