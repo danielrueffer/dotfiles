@@ -105,6 +105,12 @@ export EDITOR='nvim'
 
 #alias ssh="kitty +kitten ssh"
 
+alias cat='bat --paging=never --plain'
+alias lg='lazygit'
+alias n='nvim'
+alias vim='nvim'
+alias v='vim'
+
 alias dcrun='docker-compose run --rm'
 alias dcup='docker-compose up -d'
 alias dclogs='docker-compose logs'
