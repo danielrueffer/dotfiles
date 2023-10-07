@@ -1,15 +1,47 @@
 return {
   -- add onenord
-  { "rmehri01/onenord.nvim" },
+  -- { "rmehri01/onenord.nvim" },
 
   -- add onedark
-  { "navarasu/onedark.nvim" },
+  -- { "navarasu/onedark.nvim" },
 
-  -- Configure LazyVim to load gruvbox
+  -- add catppuccino
+  { "catppuccin/nvim" },
+
+  -- Configure LazyVim to load colorscheme
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      colorscheme = "catppuccin-mocha",
+      integrations = {
+        alpha = true,
+        cmp = true,
+        flash = true,
+        gitsigns = true,
+        illuminate = true,
+        indent_blankline = { enabled = true },
+        lsp_trouble = true,
+        mason = true,
+        mini = true,
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+          },
+        },
+        navic = { enabled = true, custom_bg = "lualine" },
+        neotest = true,
+        noice = true,
+        notify = true,
+        neotree = true,
+        semantic_tokens = true,
+        telescope = true,
+        treesitter = true,
+        which_key = true,
+      },
     },
   },
 }
