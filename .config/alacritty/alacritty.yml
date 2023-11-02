@@ -1,6 +1,6 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
 import:
-  - ~/.config/alacritty/dracula.yml
+  - ~/.config/alacritty/onedark.yml
 
 window:
   # Spread additional padding evenly around the terminal content.
