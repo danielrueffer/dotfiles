@@ -1,6 +1,9 @@
 return {
   opts = {
-    autotag = { enable = true },
+    autotag = {
+      enable = true,
+      filetypes = { "html", "xml", "eruby", "erb", "embedded_template" },
+    },
     endwise = { enable = true },
     highlight = { additional_vim_regex_highlighting = false },
     context_commentstring = { enable = true, enable_autocmd = false },
