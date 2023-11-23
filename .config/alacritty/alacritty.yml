@@ -10,9 +10,9 @@ window:
 font:
   size: 15.0
   normal:
-    # family: FiraCode Nerd Font Mono
-    # style: Regular
-    family: Monaspace Neon
+    family: FiraCode Nerd Font Mono
+    style: Regular
+    # family: Monaspace Neon
 
 cursor:
   # Cursor style
