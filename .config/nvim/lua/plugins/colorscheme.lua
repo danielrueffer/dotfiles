@@ -8,9 +8,16 @@ return {
   },
 
   {
+    "rebelot/kanagawa.nvim",
+    name = "kanagawa",
+    lazy = true,
+    priority = 1000,
+  },
+
+  {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "onedark",
+      colorscheme = "kanagawa",
     },
   },
 }
