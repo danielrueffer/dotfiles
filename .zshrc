@@ -109,10 +109,13 @@ export EDITOR='nvim'
 alias cat='bat --paging=never --plain'
 alias ls='exa'
 alias lg='lazygit'
-alias n='nvim'
+
+# NeoVim
 alias vim='nvim'
 alias v='vim'
+alias vc='NVIM_APPNAME=nvim-custom nvim'
 
+# Docker
 alias dcrun='docker-compose run --rm'
 alias dcup='docker-compose up -d'
 alias dclogs='docker-compose logs'
