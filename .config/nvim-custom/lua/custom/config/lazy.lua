@@ -16,7 +16,7 @@ require("lazy").setup({
     { import = "custom/plugins" },
   },
   install = {
-    colorscheme = { "onedark" },
+    colorscheme = { "kanagawa" },
   },
   checker = {
     enabled = true,
