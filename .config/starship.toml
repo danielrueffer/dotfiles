@@ -4,28 +4,17 @@ format = """$character$directory"""
 right_format = """$all"""
 
 [character]
-success_symbol = '[➜](bold #ff5555) '
-error_symbol = '[✗](bold #50fa7b) '
-
-[cmd_duration]
-style = "bold #f1fa8c"
+success_symbol = '[➜](bold #98BB6C) '
+error_symbol = '[✗](bold #E82424) '
 
 [directory]
-style = "bold #50fa7b"
+style = "bold #7E9CD8"
 
 [git_branch]
-style = "bold #ff79c6"
+style = "bold bright-black"
 
 [git_status]
-style = "bold #ff5555"
-
-[hostname]
-style = "bold #bd93f9"
+style = "bold #DCA561"
 
 [package]
 disabled = true
-
-[username]
-format = "[$user]($style) on "
-style_user = "bold #8be9fd"
-
