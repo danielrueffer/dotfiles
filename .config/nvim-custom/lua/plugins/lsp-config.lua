@@ -16,11 +16,17 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
+      -- used to enable autocompletion (assign to every lsp server config)
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
       local lspconfig = require("lspconfig")
-      lspconfig.lua_ls.setup({})
+      lspconfig.lua_ls.setup({
+        capabilities = capabilities,
+      })
 
       -- configure solargraph server for ruby
       lspconfig.solargraph.setup({
+        capabilities = capabilities,
         -- cmd = { "/Users/daniel/.rbenv/shims/solargraph", "stdio" },
         filetypes = { "ruby", "rakefile" },
         root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
