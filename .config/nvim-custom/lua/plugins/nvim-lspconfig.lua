@@ -11,8 +11,12 @@ return {
 		{ "j-hui/fidget.nvim", tag = "legacy" },
 	},
 	config = function()
+		-- Use neodev to configure lua_ls in nvim directories - must load before lspconfig
+		require("neodev").setup()
+
 		require("mason").setup({
 			ui = {
+				border = "rounded",
 				icons = {
 					package_installed = "✓",
 					package_pending = "➜",
@@ -22,7 +26,7 @@ return {
 		})
 
 		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_ls" },
+			ensure_installed = { "lua_ls", "rubocop" },
 			auto_install = true,
 		})
 
@@ -37,13 +41,12 @@ return {
 		-- configure solargraph server for ruby
 		lspconfig.solargraph.setup({
 			capabilities = capabilities,
-			-- cmd = { "/Users/daniel/.rbenv/shims/solargraph", "stdio" },
 			filetypes = { "ruby", "rakefile" },
 			root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
 			command_path = "~/.rbenv/shims/solargraph",
 			settings = {
 				solargraph = {
-					autoformat = true,
+					autoformat = false,
 					formatting = true,
 					completion = true,
 					definition = true,
@@ -75,5 +78,8 @@ return {
 				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 			end,
 		})
+
+		-- Configure borderd for LspInfo ui
+		require("lspconfig.ui.windows").default_options.border = "rounded"
 	end,
 }

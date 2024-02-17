@@ -9,12 +9,22 @@ return {
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
 		"rafamadriz/friendly-snippets", -- useful snippets
 		"onsails/lspkind.nvim", -- vs-code like pictograms
+		"windwp/nvim-autopairs", -- auto pairs for brackets, quotes, etc.
 	},
 	config = function()
 		-- Set up nvim-cmp.
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		local npairs = require("nvim-autopairs")
 		local cmp = require("cmp")
 		local lspkind = require("lspkind")
 		local luasnip = require("luasnip")
+
+		npairs.setup({
+			check_ts = true,
+			enable_check_bracket_line = false,
+			ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+		})
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 		require("luasnip.loaders.from_vscode").lazy_load()
