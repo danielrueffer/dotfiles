@@ -9,7 +9,9 @@ return {
 			ensure_installed = {
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
+				"rubocop", -- ruby formatter
 			},
+			auto_install = true,
 		})
 
 		-- to setup format on save
@@ -19,6 +21,7 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
+				null_ls.builtins.formatting.rubocop,
 			},
 			-- configure format on save
 			on_attach = function(current_client, bufnr)
