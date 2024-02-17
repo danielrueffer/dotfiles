@@ -8,25 +8,7 @@ return {
   config = function()
     local config = require("nvim-treesitter.configs")
     config.setup({
-      ensure_installed = {
-        "bash",
-        "css",
-        "dockerfile",
-        "gitignore",
-        "html",
-        "javascript",
-        "json",
-        "lua",
-        "markdown",
-        "markdown_inline",
-        "python",
-        "query",
-        "ruby",
-        "tsx",
-        "typescript",
-        "vim",
-        "yaml",
-      },
+      auto_install = true,
       highlight = {
         enable = true,
         -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
