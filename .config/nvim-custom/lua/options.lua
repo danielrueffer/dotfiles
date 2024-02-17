@@ -12,6 +12,7 @@ opt.number = true
 opt.tabstop = 2
 opt.softtabstop = 2
 opt.expandtab = true
+opt.autoindent = true
 
 -- enable auto indenting and set it to spaces
 opt.smartindent = true
