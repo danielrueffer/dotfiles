@@ -7,9 +7,7 @@ return {
 		local mason_null_ls = require("mason-null-ls")
 		mason_null_ls.setup({
 			ensure_installed = {
-				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
-				"rubocop", -- ruby formatter
 			},
 			auto_install = true,
 		})
@@ -21,7 +19,13 @@ return {
 		null_ls.setup({
 			sources = {
 				null_ls.builtins.formatting.stylua,
-				null_ls.builtins.formatting.rubocop,
+				null_ls.builtins.formatting.rubocop.with({
+					command = "bundle",
+					args = vim.list_extend(
+						{ "exec", "rubocop" },
+						require("null-ls").builtins.formatting.rubocop._opts.args
+					),
+				}),
 			},
 			-- configure format on save
 			on_attach = function(current_client, bufnr)
