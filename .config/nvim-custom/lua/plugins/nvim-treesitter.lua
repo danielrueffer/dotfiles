@@ -8,6 +8,20 @@ return {
 	config = function()
 		local config = require("nvim-treesitter.configs")
 		config.setup({
+			ensure_installed = {
+				"bash",
+				"embedded_template",
+				"javascript",
+				"html",
+				"markdown",
+				"markdown_inline",
+				"regex",
+				"ruby",
+				"vim",
+				"vimdoc",
+				"xml",
+				"yaml",
+			},
 			auto_install = true,
 			highlight = {
 				enable = true,
@@ -18,7 +32,10 @@ return {
 				additional_vim_regex_highlighting = false,
 			},
 			indent = { enable = true },
-			autotag = { enable = true },
+			autotag = {
+				enable = true,
+				filetypes = { "html", "xml", "eruby", "erb", "embedded_template" },
+			},
 			autopairs = { enable = true },
 			endwise = { enable = true },
 		})
