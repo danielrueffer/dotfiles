@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"windwp/nvim-ts-autotag",
 		"RRethy/nvim-treesitter-endwise",
+		"nvim-treesitter/nvim-treesitter-context",
 	},
 	config = function()
 		local config = require("nvim-treesitter.configs")
@@ -39,5 +40,7 @@ return {
 			autopairs = { enable = true },
 			endwise = { enable = true },
 		})
+
+		require("treesitter-context").setup()
 	end,
 }
