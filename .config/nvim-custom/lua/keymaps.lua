@@ -6,6 +6,8 @@ keymap.set("n", "0", "^", { desc = "Goto first non empty character in line" })
 keymap.set("n", "<esc>", ":nohl<CR>", { desc = "Clear search highlights", noremap = true, silent = true })
 keymap.set("n", "<leader>qq", "<cmd> qa <CR>", { desc = "Close neovim" })
 keymap.set("v", "p", "_dP", { desc = "Paste without yanking" })
+keymap.set("v", "<", "<gv", { desc = "Remove indent" })
+keymap.set("v", ">", ">gv", { desc = "Add indent" })
 
 -- windows
 keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
