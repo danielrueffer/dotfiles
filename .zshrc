@@ -111,11 +111,11 @@ alias ls='exa'
 alias lg='lazygit'
 
 # NeoVim
-alias vc='NVIM_APPNAME=nvim-custom nvim'
-alias lazyvim='NVIM_APPNAME=nvim'
-alias nvim='vc'
-alias vim='vc'
-alias v='vc'
+alias customvim='NVIM_APPNAME=nvim-custom nvim'
+alias lazyvim='NVIM_APPNAME=nvim nvim'
+alias vim='customvim'
+alias v='customvim'
+alias n='customvim'
 
 # Docker
 alias dcrun='docker-compose run --rm'
