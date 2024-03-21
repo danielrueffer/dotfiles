@@ -12,8 +12,8 @@ return {
           cmd = { "/Users/daniel/.rbenv/shims/solargraph", "stdio" },
           settings = {
             solargraph = {
-              autoformat = true,
-              formatting = true,
+              autoformat = false,
+              formatting = false,
               completion = true,
               definition = true,
               hover = true,
