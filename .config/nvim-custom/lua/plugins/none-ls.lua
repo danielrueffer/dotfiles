@@ -26,6 +26,13 @@ return {
 						require("null-ls").builtins.formatting.rubocop._opts.args
 					),
 				}),
+				null_ls.builtins.diagnostics.rubocop.with({
+					command = "bundle",
+					args = vim.list_extend(
+						{ "exec", "rubocop" },
+						require("null-ls").builtins.diagnostics.rubocop._opts.args
+					),
+				}),
 			},
 			-- configure format on save
 			on_attach = function(current_client, bufnr)
