@@ -129,3 +129,6 @@ alias dcbundle='docker-compose run --rm bundle'
 alias dcracksh='docker-compose run --rm web racksh'
 
 eval "$(starship init zsh)"
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
