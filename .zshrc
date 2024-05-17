@@ -132,3 +132,6 @@ eval "$(starship init zsh)"
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
+
+# fzf shell integration
+eval "$(fzf --zsh)"
