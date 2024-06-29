@@ -1,7 +1,6 @@
 local keymap = vim.keymap -- for conciseness
 
 -- general
-keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
 keymap.set("n", "0", "^", { desc = "Goto first non empty character in line" })
 keymap.set("n", "<esc>", ":nohl<CR>", { desc = "Clear search highlights", noremap = true, silent = true })
 keymap.set("n", "<leader>qq", "<cmd> qa <CR>", { desc = "Close neovim" })

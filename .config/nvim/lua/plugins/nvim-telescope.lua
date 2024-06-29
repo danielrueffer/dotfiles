@@ -25,6 +25,7 @@ return {
 				path_display = { "truncate " },
 				mappings = {
 					i = {
+						["<C-d>"] = actions.delete_buffer, -- delete selected buffer
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
 						["<C-j>"] = actions.move_selection_next, -- move to next result
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
@@ -48,6 +49,7 @@ return {
 			{ desc = "Find files including hidden files" }
 		)
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Find recent files" })
+		keymap.set("n", "<leader>fR", "<cmd>Telescope resume<cr>", { desc = "Find recent search" })
 		keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Find string in cwd" })
 		keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
 		keymap.set("n", "<leader>fw", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor in cwd" })

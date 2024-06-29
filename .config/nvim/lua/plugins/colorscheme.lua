@@ -1,23 +1,12 @@
 return {
-  {
-    "navarasu/onedark.nvim",
-    name = "onedark",
-    lazy = true,
-    priority = 1000,
-    opts = { style = "deep" },
-  },
-
-  {
-    "rebelot/kanagawa.nvim",
-    name = "kanagawa",
-    lazy = true,
-    priority = 1000,
-  },
-
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "kanagawa",
-    },
-  },
+	"catppuccin/nvim",
+	name = "catppuccin",
+	priority = 1000,
+	lazy = false,
+	config = function()
+		require("catppuccin").setup({
+			flavour = "mocha",
+		})
+		vim.cmd.colorscheme("catppuccin")
+	end,
 }

@@ -10,5 +10,6 @@ return {
 	vim.keymap.set("n", "<leader>v", ":TestVisit<CR>", { desc = "Run test last" }),
 	vim.cmd("let test#strategy = 'vimux'"),
 	vim.cmd("let test#ruby#minitest#executable = 'bin/test'"),
+	vim.cmd("let test#ruby#rspec#executable = 'bin/test'"),
 	vim.cmd("let test#ruby#rails#executable = 'bin/test'"),
 }

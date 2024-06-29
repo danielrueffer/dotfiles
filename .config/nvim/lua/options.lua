@@ -1,5 +1,8 @@
 local opt = vim.opt -- for conciseness
 
+-- Fix for slow fish shell (see https://www.reddit.com/r/neovim/comments/olrtof/a_fix_for_neovim_been_slow_for_fish_users/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
+opt.shell = "/bin/bash"
+
 -- Set leader key to space
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
