@@ -128,10 +128,10 @@ alias dcrails='docker-compose run --rm rails'
 alias dcbundle='docker-compose run --rm bundle'
 alias dcracksh='docker-compose run --rm web racksh'
 
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+#export PATH="$HOME/.rbenv/bin:$PATH"
+#eval "$(rbenv init -)"
 
 # fzf shell integration
-eval "$(fzf --zsh)"
+#eval "$(fzf --zsh)"
