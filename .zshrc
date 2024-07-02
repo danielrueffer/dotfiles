@@ -1,17 +1,14 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your oh-my-zsh installation.
+# Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
+# load a random theme each time Oh My Zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-# ZSH_THEME="agnoster"
-# ZSH_THEME="amuse"
-# ZSH_THEME="passion"
-ZSH_THEME=""
+# ZSH_THEME="robbyrussell"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -44,7 +41,7 @@ ZSH_THEME=""
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # You can also set it to another string to have that shown instead of the default red dots.
@@ -64,6 +61,17 @@ COMPLETION_WAITING_DOTS="true"
 # or set a custom format using the strftime function format specifications,
 # see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
+# History in cache directory
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.cache/zsh/history
+
+# Basic auto/tab complete
+autoload -U compinit
+zstyle ':completion:*' menu select
+zmodload zsh/complist
+compinit
+_comp_options+=(globdots)
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
@@ -73,7 +81,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew docker docker-compose git rbenv zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,43 +103,37 @@ export EDITOR='nvim'
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# Set personal aliases, overriding those provided by Oh My Zsh libs,
+# plugins, and themes. Aliases can be placed here, though Oh My Zsh
+# users are encouraged to define aliases within a top-level file in
+# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
+# - $ZSH_CUSTOM/aliases.zsh
+# - $ZSH_CUSTOM/macos.zsh
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+alias ll="ls -al"
+alias ls="eza"
+alias cat="bat"
+alias lg="lazygit"
+alias dcbuild="docker compose build"
+alias dcup="docker compose up"
+alias dcrun="docker compose run --rm"
+alias dcdn="docker compose down"
+alias dcrails="docker compose run --rm web bundle exec rails"
+alias icd="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/"
 
-#alias ssh="kitty +kitten ssh"
+# Load asdf
+. $(brew --prefix)/opt/asdf/libexec/asdf.sh
 
-alias cat='bat --paging=never --plain'
-alias ls='exa'
-alias lg='lazygit'
+# Load starship
+eval "$(starship init zsh)" alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# NeoVim
-alias customvim='NVIM_APPNAME=nvim-custom nvim'
-alias lazyvim='NVIM_APPNAME=nvim nvim'
-alias vim='customvim'
-alias v='customvim'
-alias n='customvim'
+# Set up fzf key bindings and fuzzy completion
+source <(fzf --zsh)
 
-# Docker
-alias dcrun='docker-compose run --rm'
-alias dcup='docker-compose up -d'
-alias dclogs='docker-compose logs'
-alias dcps='docker-compose ps'
-alias dps='docker ps'
-alias dcrake='docker-compose run --rm rake'
-alias dcrails='docker-compose run --rm rails'
-alias dcbundle='docker-compose run --rm bundle'
-alias dcracksh='docker-compose run --rm web racksh'
+# Activate zsh-autosuggestions installed by brew
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-#eval "$(starship init zsh)"
-
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
-
-# fzf shell integration
-#eval "$(fzf --zsh)"
+# Activate zsh-syntax-highlighting installed by brew
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
