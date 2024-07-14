@@ -22,7 +22,7 @@ return {
 						},
 					},
 				},
-				path_display = { "truncate " },
+				path_display = { "smart" },
 				mappings = {
 					i = {
 						["<C-d>"] = actions.delete_buffer, -- delete selected buffer
