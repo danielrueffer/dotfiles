@@ -5,20 +5,18 @@ return {
 		vim.o.timeout = true
 		vim.o.timeoutlen = 300
 	end,
-	config = function()
-		local wk = require("which-key")
-
-		local opt = { prefix = "<leader>" }
-
-		local mappings = {
-			b = { name = "Buffer" },
-			c = { name = "Code" },
-			f = { name = "Find" },
-			g = { name = "Git" },
-			n = { name = "Notifications" },
-			q = { name = "Quit" },
-		}
-
-		wk.register(mappings, opt)
-	end,
+	opts = {
+		-- your configuration comes here
+		-- or leave it empty to use the default settings
+		-- refer to the configuration section below
+	},
+	keys = {
+		{ "<leader>b", group = "Buffer" },
+		{ "<leader>c", group = "Code" },
+		{ "<leader>e", group = "Explorer" },
+		{ "<leader>f", group = "Find" },
+		{ "<leader>g", group = "Git" },
+		{ "<leader>n", group = "Notifications" },
+		{ "<leader>q", group = "Quit" },
+	},
 }
