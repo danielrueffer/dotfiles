@@ -36,10 +36,19 @@ return {
 			indent = { enable = true },
 			autotag = {
 				enable = true,
-				filetypes = { "html", "xml", "eruby", "erb", "embedded_template" },
+				-- filetypes = { "html", "xml", "eruby", "erb", "embedded_template" },
 			},
 			autopairs = { enable = true },
 			endwise = { enable = true },
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "<C-space>",
+					node_incremental = "<C-space>",
+					scope_incremental = false,
+					node_decremental = "<bs>",
+				},
+			},
 		})
 
 		require("treesitter-context").setup()
