@@ -70,8 +70,8 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
+				{ name = "luasnip" },
 				{ name = "buffer", max_item_count = 5 }, -- text within current buffer
-				{ name = "copilot" }, -- source for copilot completions
 				{ name = "path", max_item_count = 3 }, -- file system paths
 			}),
 			-- configure lspkind for vs-code like pictograms in completion menu
@@ -81,9 +81,6 @@ return {
 					mode = "symbol_text",
 					maxwidth = 50,
 					ellipsis_char = "...",
-					symbol_map = {
-						Copilot = "",
-					},
 				}),
 				experimental = {
 					ghost_text = true,
