@@ -11,23 +11,48 @@ return {
 		local actions = require("telescope.actions")
 
 		telescope.setup({
+			pickers = {
+				buffers = {
+					show_all_buffers = true,
+					sort_lastused = true,
+					sort_mru = true,
+					previewer = false,
+					theme = "dropdown",
+					mappings = {
+						i = {
+							["<C-d>"] = actions.delete_buffer, -- delete selected buffer
+						},
+					},
+				},
+			},
 			defaults = {
 				layout_strategy = "vertical",
 				layout_config = {
 					preview_height = 0.7,
 					vertical = {
 						size = {
-							width = "95%",
-							height = "95%",
+							width = 0.95,
+							height = 0.95,
+						},
+					},
+					horizontal = {
+						size = {
+							width = 0.95,
+							height = 0.95,
 						},
 					},
 				},
 				path_display = { "smart" },
 				mappings = {
 					i = {
-						["<C-d>"] = actions.delete_buffer, -- delete selected buffer
-						["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						["<C-j>"] = actions.move_selection_next, -- move to next result
+						["<esc>"] = actions.close,
+						["<C-u>"] = false,
+						["<C-j>"] = require("telescope.actions").cycle_history_next,
+						["<C-k>"] = require("telescope.actions").cycle_history_prev,
+						["<C-n>"] = require("telescope.actions").move_selection_next,
+						["<C-p>"] = require("telescope.actions").move_selection_previous,
+						-- ["<C-k>"] = actions.move_selection_previous, -- move to prev result
+						-- ["<C-j>"] = actions.move_selection_next, -- move to next result
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 					},
 				},
@@ -36,7 +61,7 @@ return {
 		})
 
 		telescope.load_extension("fzf")
-		telescope.load_extension("noice")
+		-- telescope.load_extension("noice")
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
