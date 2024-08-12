@@ -8,7 +8,7 @@ return {
 	config = function()
 		require("notify").setup({
 			render = "wrapped-compact",
-      max_width = 50,
+			max_width = 50,
 		})
 
 		require("noice").setup({

@@ -1,8 +1,5 @@
 local opt = vim.opt -- for conciseness
 
--- Fix for slow fish shell (see https://www.reddit.com/r/neovim/comments/olrtof/a_fix_for_neovim_been_slow_for_fish_users/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button)
-opt.shell = "/bin/bash"
-
 -- Set leader key to space
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -28,7 +25,7 @@ opt.smartindent = true
 opt.shiftwidth = 2
 
 -- Enable smart indenting (see https://stackoverflow.com/questions/1204149/smart-wrap-in-vim)
-vim.opt.breakindent = true
+opt.breakindent = true
 
 -- disable text wrap
 opt.wrap = false
@@ -67,15 +64,15 @@ opt.cursorline = true
 opt.signcolumn = "yes"
 
 -- Set completeopt to have a better completion experience
-vim.opt.completeopt = { "menuone", "noselect" }
+opt.completeopt = { "menuone", "noselect" }
 
 -- Enable persistent undo history
-vim.opt.undofile = true
+opt.undofile = true
 
 -- Always keep 8 lines above/below cursor unless at start/end of file
-vim.opt.scrolloff = 8
+opt.scrolloff = 8
 
-vim.opt.guicursor = {
+opt.guicursor = {
 	"n-v-c:block", -- Normal, visual, command-line: block cursor
 	"i-ci-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
 	"r-cr:hor20", -- Replace, command-line replace: horizontal bar cursor with 20% height

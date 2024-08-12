@@ -28,7 +28,6 @@ return {
 			defaults = {
 				layout_strategy = "vertical",
 				layout_config = {
-					preview_height = 0.7,
 					vertical = {
 						size = {
 							width = 0.95,
@@ -42,7 +41,6 @@ return {
 						},
 					},
 				},
-				path_display = { "smart" },
 				mappings = {
 					i = {
 						["<esc>"] = actions.close,
@@ -61,7 +59,7 @@ return {
 		})
 
 		telescope.load_extension("fzf")
-		-- telescope.load_extension("noice")
+		telescope.load_extension("noice")
 
 		-- set keymaps
 		local keymap = vim.keymap -- for conciseness
