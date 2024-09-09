@@ -149,11 +149,12 @@ local function configure()
 		val = {
 			{ type = "text", val = "Quick links", opts = { hl = "SpecialComment", position = "center" } },
 			{ type = "padding", val = 1 },
-			dashboard.button("e", "  New file", "<cmd>ene<CR>"),
-			dashboard.button("SPC ff", "  Find file"),
-			dashboard.button("SPC fg", "  Find text"),
-			dashboard.button("u", "󱐥  Update plugins", "<cmd>Lazy sync<CR>"),
-			dashboard.button("q", "󰩈  Quit", "<cmd>qa<CR>"),
+			dashboard.button("f", " " .. " Find file", "<cmd>Telescope find_files<cr>"),
+			dashboard.button("n", " " .. " New file", [[<cmd> ene <BAR> startinsert <cr>]]),
+			dashboard.button("r", " " .. " Recent files", "<cmd>Telescope oldfiles<cr>"),
+			dashboard.button("g", " " .. " Find text", "<cmd>Telescope live_grep<cr>"),
+			dashboard.button("l", "󰒲 " .. " Lazy", "<cmd> Lazy <cr>"),
+			dashboard.button("q", " " .. " Quit", "<cmd> qa <cr>"),
 		},
 		position = "center",
 	}

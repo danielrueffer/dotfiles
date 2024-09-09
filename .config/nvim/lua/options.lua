@@ -1,14 +1,10 @@
-local opt = vim.opt -- for conciseness
-
--- Set leader key to space
-vim.g.mapleader = " "
-vim.g.maplocalleader = " "
-
 vim.g.loaded_node_provider = 0
 vim.g.loaded_perl_provider = 0
 vim.g.loaded_python_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
+
+local opt = vim.opt -- for conciseness
 
 -- line numbers
 opt.relativenumber = true
@@ -36,12 +32,14 @@ opt.smartcase = true
 
 -- enable incremental searching
 opt.incsearch = true
+
+-- set highlight on search
 opt.hlsearch = true
 
 -- appearence
 opt.termguicolors = true
 
--- clipboard
+-- sync clipboard between OS and Neovim
 opt.clipboard:append("unnamedplus")
 
 -- backspace
@@ -58,10 +56,7 @@ opt.iskeyword:append("-")
 opt.mouse = "a"
 
 -- enable cursor line highlight
-opt.cursorline = true
-
--- enable signcolumn
-opt.signcolumn = "yes"
+opt.cursorline = false
 
 -- Set completeopt to have a better completion experience
 opt.completeopt = { "menuone", "noselect" }
@@ -72,6 +67,8 @@ opt.undofile = true
 -- Always keep 8 lines above/below cursor unless at start/end of file
 opt.scrolloff = 8
 
+-- enable signcolumn
+opt.signcolumn = "yes"
 opt.guicursor = {
 	"n-v-c:block", -- Normal, visual, command-line: block cursor
 	"i-ci-ve:ver25", -- Insert, command-line insert, visual-exclude: vertical bar cursor with 25% width
@@ -80,3 +77,20 @@ opt.guicursor = {
 	"a:blinkwait700-blinkoff400-blinkon250", -- All modes: blinking settings
 	"sm:block-blinkwait175-blinkoff150-blinkon175", -- Showmatch: block cursor with specific blinking settings
 }
+
+-- creates a backup file
+opt.backup = false
+-- if a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
+opt.writebackup = false
+
+-- Set completeopt to have a better completion experience
+opt.completeopt = "menuone,noselect"
+
+-- don't insert the current comment leader automatically for auto-wrapping comments using 'textwidth', hitting <Enter> in insert mode, or hitting 'o' or 'O' in normal mode
+opt.formatoptions:remove({ "c", "r", "o" })
+
+-- creates a swapfile
+opt.swapfile = false
+
+-- we don't need to see things like -- INSERT -- anymore
+opt.showmode = false

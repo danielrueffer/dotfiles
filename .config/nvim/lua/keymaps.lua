@@ -1,29 +1,73 @@
-local keymap = vim.keymap -- for conciseness
+local function map(mode, lhs, rhs, opts)
+	local options = { noremap = true, silent = true }
+	if opts then
+		options = vim.tbl_extend("force", options, opts)
+	end
+	vim.keymap.set(mode, lhs, rhs, options)
+end
+
+-- Set leader key to space
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
+-- Disable the spacebar key's default behavior in Normal and Visual modes
+map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
+
+-- clear highlights
+map("n", "<esc>", ":nohl<CR>", { desc = "Clear highlights" })
+
+-- save file
+map("n", "<C-s>", "<cmd> w<CR>", { desc = "Save file" })
+
+-- quit file
+map("n", "<C-q>", "<cmd> q <CR>", { desc = "Quit file" })
+
+-- delete single character without copying into register
+map("n", "x", '"_x')
+
+-- Vertical scroll and center
+map("n", "<C-d>", "<C-d>zz")
+map("n", "<C-u>", "<C-u>zz")
+
+-- find and center
+map("n", "n", "nzzzv")
+map("n", "N", "Nzzzv")
+
+-- quit neovim
+map("n", "<leader>qq", "<cmd> qa <CR>", { desc = "Quit neovim" })
 
 -- general
-keymap.set("n", "0", "^", { desc = "Goto first non empty character in line" })
-keymap.set("n", "<esc>", ":nohl<CR>", { desc = "Clear search highlights", noremap = true, silent = true })
-keymap.set("n", "<leader>qq", "<cmd> qa <CR>", { desc = "Close neovim" })
-keymap.set("v", "p", "_dP", { desc = "Paste without yanking" })
-keymap.set("x", "p", "P", { desc = "Paste without yanking" })
-keymap.set("v", "<", "<gv", { desc = "Remove indent" })
-keymap.set("v", ">", ">gv", { desc = "Add indent" })
+map("n", "0", "^", { desc = "Jump to first character" })
+
+-- keep last yanked when pasting
+map("v", "p", "_dP")
+map("x", "p", "P")
+
+-- stay in indent mode
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+-- Resize with arrows
+map("n", "<Up>", ":resize -2<CR>", { desc = "Resize up" })
+map("n", "<Down>", ":resize +2<CR>", { desc = "Resize down" })
+map("n", "<Left>", ":vertical resize -2<CR>", { desc = "Resize left" })
+map("n", "<Right>", ":vertical resize +2<CR>", { desc = "Resize right" })
 
 -- windows
-keymap.set("n", "<leader>ww", "<C-W>p", { desc = "Other window" })
-keymap.set("n", "<leader>wd", "<C-W>c", { desc = "Delete window" })
-keymap.set("n", "<leader>w|", "<C-W>v", { desc = "Split window right" })
-keymap.set("n", "<leader>w-", "<C-W>s", { desc = "Split window below" })
-keymap.set("n", "<leader>|", "<C-W>v", { desc = "Split window right" })
-keymap.set("n", "<leader>-", "<C-W>s", { desc = "Split window below" })
+map("n", "<leader>|", "<C-W>v", { desc = "Split window horizontal" })
+map("n", "<leader>-", "<C-W>s", { desc = "Split window vertical" })
+map("n", "<leader>we", "<C-w>=", { desc = "Equal split size" })
+map("n", "<leader>ws", ":close<CR>", { desc = "Close split window" })
 
 -- buffers
-keymap.set("n", "<leader>bw", "<cmd> w <CR>", { desc = "Write buffer" })
-keymap.set("n", "<leader>bd", "<cmd>bd<CR>", { desc = "Delete buffer" })
-keymap.set("n", "H", "<cmd>bprev<CR>", { desc = "Previous buffer" })
-keymap.set("n", "L", "<cmd>bnext<CR>", { desc = "Next buffer" })
--- Switch between current and previous buffer
-keymap.set("n", "<leader><leader>", "<c-^>", { desc = "Previous buffer", noremap = true, silent = true })
+map("n", "<leader>x", "<cmd>bdelete!<CR>", { desc = "Close buffer" })
+map("n", "H", "<cmd>bprev<CR>", { desc = "Previous buffer" })
+map("n", "L", "<cmd>bnext<CR>", { desc = "Next buffer" })
+map("n", "<leader><leader>", "<c-^>", { desc = "Last buffer" })
 
--- write file
-keymap.set("n", "<leader>s", ":w<cr>", { desc = "[S]ave current file" })
+-- Move text up and down
+map("v", "<A-j>", ":m .+1<CR>==", { desc = "Move text up" })
+map("v", "<A-k>", ":m .-2<CR>==", { desc = "Move text down" })
+
+-- open lazygit in tmux window
+map("n", "<leader>gg", "<cmd>!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>", { desc = "Lazygit" })

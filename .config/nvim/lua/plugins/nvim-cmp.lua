@@ -1,6 +1,6 @@
 return {
 	"hrsh7th/nvim-cmp",
-	event = "InsertEnter",
+	event = { "InsertEnter", "CmdlineEnter" },
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp", -- source for nvim lsp completions
 		"hrsh7th/cmp-buffer", -- source for text in buffer
@@ -8,7 +8,6 @@ return {
 		"hrsh7th/cmp-cmdline", -- source for vim's command line completions
 		"L3MON4D3/LuaSnip", -- snippet engine
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
-		"rafamadriz/friendly-snippets", -- useful snippets
 		"onsails/lspkind.nvim", -- vs-code like pictograms
 		"windwp/nvim-autopairs", -- auto pairs for brackets, quotes, etc.
 	},
@@ -30,9 +29,36 @@ return {
 		-- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
 		require("luasnip.loaders.from_vscode").lazy_load()
 
+		local kind_icons = {
+			Text = "󰉿",
+			Method = "m",
+			Function = "󰊕",
+			Constructor = "",
+			Field = "",
+			Variable = "󰆧",
+			Class = "󰌗",
+			Interface = "",
+			Module = "",
+			Property = "",
+			Unit = "",
+			Value = "󰎠",
+			Enum = "",
+			Keyword = "󰌋",
+			Snippet = "",
+			Color = "󰏘",
+			File = "󰈙",
+			Reference = "",
+			Folder = "󰉋",
+			EnumMember = "",
+			Constant = "󰇽",
+			Struct = "",
+			Event = "",
+			Operator = "󰆕",
+			TypeParameter = "󰊄",
+		}
+
 		cmp.setup({
 			snippet = {
-				-- REQUIRED - you must specify a snippet engine
 				expand = function(args)
 					luasnip.lsp_expand(args.body) -- For `luasnip` users.
 				end,
@@ -42,12 +68,18 @@ return {
 				documentation = cmp.config.window.bordered(),
 			},
 			mapping = cmp.mapping.preset.insert({
-				["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
-				["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+				["<C-j>"] = cmp.mapping.select_next_item(), -- Select the [n]ext item
+				["<C-k>"] = cmp.mapping.select_prev_item(), -- Select the [p]revious item
+				["<C-b>"] = cmp.mapping.scroll_docs(-4),
+				["<C-f>"] = cmp.mapping.scroll_docs(4),
+				["<C-e>"] = cmp.mapping.abort(),
+				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+				["<C-c>"] = cmp.mapping.complete({}), -- Manually trigger a completion from nvim-cmp.
+				-- Select next/previous item with Tab / Shift + Tab
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item()
-					elseif luasnip.expand_or_jumpable() then
+					elseif luasnip.expand_or_locally_jumpable() then
 						luasnip.expand_or_jump()
 					else
 						fallback()
@@ -56,32 +88,35 @@ return {
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
+					elseif luasnip.locally_jumpable(-1) then
 						luasnip.jump(-1)
 					else
 						fallback()
 					end
 				end, { "i", "s" }),
-				["<C-b>"] = cmp.mapping.scroll_docs(-4),
-				["<C-f>"] = cmp.mapping.scroll_docs(4),
-				["<C-Space>"] = cmp.mapping.complete(),
-				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				{ name = "buffer", max_item_count = 5 }, -- text within current buffer
+				{ name = "buffer" }, -- text within current buffer
 				{ name = "path", max_item_count = 3 }, -- file system paths
 			}),
 			-- configure lspkind for vs-code like pictograms in completion menu
 			formatting = {
+				fields = { "kind", "abbr", "menu" },
 				expandable_indicator = true,
-				format = lspkind.cmp_format({
-					mode = "symbol_text",
-					maxwidth = 50,
-					ellipsis_char = "...",
-				}),
+				format = function(entry, vim_item)
+					-- Kind icons
+					vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+					-- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+					vim_item.menu = ({
+						nvim_lsp = "[LSP]",
+						luasnip = "[Snippet]",
+						buffer = "[Buffer]",
+						path = "[Path]",
+					})[entry.source.name]
+					return vim_item
+				end,
 				experimental = {
 					ghost_text = true,
 				},

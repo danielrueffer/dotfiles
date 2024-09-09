@@ -11,6 +11,36 @@ return {
 		-- Progress/Status update for LSP
 		{ "j-hui/fidget.nvim", tag = "legacy" },
 	},
+	opts = {
+		diagnostics = {
+			underline = true,
+			update_in_insert = false,
+			virtual_text = {
+				spacing = 4,
+				source = "if_many",
+				prefix = "●",
+			},
+			severity_sort = true,
+			signs = {
+				text = {
+					[vim.diagnostic.severity.ERROR] = " ",
+					[vim.diagnostic.severity.WARN] = " ",
+					[vim.diagnostic.severity.HINT] = "󰠠 ",
+					[vim.diagnostic.severity.INFO] = " ",
+				},
+			},
+		},
+		inlay_hints = {
+			enabled = true,
+		},
+		codelens = {
+			enabled = false,
+		},
+		format = {
+			formatting_options = nil,
+			timeout_ms = nil,
+		},
+	},
 	config = function()
 		-- Use neodev to configure lua_ls in nvim directories - must load before lspconfig
 		require("neodev").setup()
@@ -28,7 +58,6 @@ return {
 
 		require("mason-lspconfig").setup({
 			ensure_installed = { "lua_ls" },
-			auto_install = true,
 		})
 
 		-- used to enable autocompletion (assign to every lsp server config)
@@ -79,14 +108,6 @@ return {
 				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
 			end,
 		})
-
-		-- Change the Diagnostic symbols in the sign column (gutter)
-		-- (not in youtube nvim video)
-		local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-		for type, icon in pairs(signs) do
-			local hl = "DiagnosticSign" .. type
-			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-		end
 
 		-- Configure borderd for LspInfo ui
 		require("lspconfig.ui.windows").default_options.border = "rounded"
