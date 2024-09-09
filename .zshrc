@@ -88,3 +88,13 @@ alias icd="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/"
 
 # Shell integrations
 eval "$(fzf --zsh)"
+
+. /opt/homebrew/opt/asdf/libexec/asdf.sh
+
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/danielrueffer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/danielrueffer/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/danielrueffer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/danielrueffer/google-cloud-sdk/completion.zsh.inc'; fi
+eval "$($HOME/work/exchangehub-toolbelt/bin/xtb init -)"
