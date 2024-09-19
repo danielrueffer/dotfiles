@@ -17,10 +17,13 @@ map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 map("n", "<esc>", ":nohl<CR>", { desc = "Clear highlights" })
 
 -- save file
-map("n", "<C-s>", "<cmd> w<CR>", { desc = "Save file" })
+map("n", "<leader>s", "<cmd> w<CR>", { desc = "Save file" })
+
+-- quit neovim
+map("n", "<leader>qq", "<cmd> qa <CR>", { desc = "Quit neovim" })
 
 -- quit file
-map("n", "<C-q>", "<cmd> q <CR>", { desc = "Quit file" })
+map("n", "<leader>qf", "<cmd> q <CR>", { desc = "Quit file" })
 
 -- delete single character without copying into register
 map("n", "x", '"_x')
@@ -32,9 +35,6 @@ map("n", "<C-u>", "<C-u>zz")
 -- find and center
 map("n", "n", "nzzzv")
 map("n", "N", "Nzzzv")
-
--- quit neovim
-map("n", "<leader>qq", "<cmd> qa <CR>", { desc = "Quit neovim" })
 
 -- general
 map("n", "0", "^", { desc = "Jump to first character" })

@@ -44,7 +44,6 @@ return {
 				mappings = {
 					i = {
 						["<esc>"] = actions.close,
-						["<C-u>"] = false,
 						["<C-j>"] = require("telescope.actions").move_selection_next,
 						["<C-k>"] = require("telescope.actions").move_selection_previous,
 						["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,

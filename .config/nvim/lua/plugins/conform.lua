@@ -12,13 +12,12 @@ return {
 			formatters = {
 				rubocop = function()
 					return {
-						command = "bin/rubocop",
+						command = "bundle",
 						args = {
+							"exec",
+							"rubocop",
 							"--server",
-							"--fix-layout",
 							"--autocorrect-all",
-							"--format",
-							"files",
 							"--stderr",
 							"--stdin",
 							"$FILENAME",
@@ -28,11 +27,18 @@ return {
 				end,
 			},
 			format_on_save = {
-				-- These options will be passed to conform.format()
-				lsp_format = "fallback",
+				lsp_fallback = true,
 				async = false,
 				timeout_ms = 1000,
 			},
 		})
+
+		vim.keymap.set({ "n", "v" }, "<leader>cf", function()
+			conform.format({
+				lsp_fallback = true,
+				async = false,
+				timeout_ms = 1000,
+			})
+		end, { desc = "Format file or range (in visual mode)" })
 	end,
 }
