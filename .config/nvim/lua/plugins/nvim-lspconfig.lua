@@ -30,9 +30,6 @@ return {
 			ensure_installed = { "lua_ls" },
 		})
 
-		-- used to enable autocompletion (assign to every lsp server config)
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
 		-- Change the Diagnostic symbols in the sign column (gutter)
 		local signs = { Error = "󰅚 ", Warn = "󰀪 ", Hint = "󰌶 ", Info = " " }
 		for type, icon in pairs(signs) do
@@ -40,31 +37,41 @@ return {
 			vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 		end
 
+		-- used to enable autocompletion (assign to every lsp server config)
+		local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
 		local lspconfig = require("lspconfig")
 		lspconfig.lua_ls.setup({
 			capabilities = capabilities,
 		})
 
 		-- configure solargraph server for ruby
-		lspconfig.solargraph.setup({
+		-- lspconfig.solargraph.setup({
+		-- 	capabilities = capabilities,
+		-- 	filetypes = { "ruby", "rakefile" },
+		-- 	root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+		-- 	command_path = "~/.rbenv/shims/solargraph",
+		-- 	settings = {
+		-- 		solargraph = {
+		-- 			autoformat = false,
+		-- 			formatting = false,
+		-- 			completion = true,
+		-- 			definition = true,
+		-- 			hover = true,
+		-- 			diagnostic = false,
+		-- 			folding = true,
+		-- 			references = true,
+		-- 			rename = true,
+		-- 			symbols = true,
+		-- 		},
+		-- 	},
+		-- })
+
+		-- configure ruby_lsp server for ruby
+		lspconfig.ruby_lsp.setup({
 			capabilities = capabilities,
-			filetypes = { "ruby", "rakefile" },
 			root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
-			command_path = "~/.rbenv/shims/solargraph",
-			settings = {
-				solargraph = {
-					autoformat = false,
-					formatting = false,
-					completion = true,
-					definition = true,
-					hover = true,
-					diagnostic = false,
-					folding = true,
-					references = true,
-					rename = true,
-					symbols = true,
-				},
-			},
+			command_path = "~/.rbenv/shims/ruby-lsp",
 		})
 
 		-- Use LspAttach autocommand to only map the following keys
@@ -78,11 +85,12 @@ return {
 				-- Buffer local mappings.
 				-- See `:help vim.lsp.*` for documentation on any of the below functions
 				local opts = { buffer = ev.buf }
-				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-				vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-				vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+				vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 				vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+				vim.keymap.set("n", "gf", vim.lsp.buf.format, opts)
+				vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+				vim.keymap.set({ "n", "v" }, "<leader>rn", vim.lsp.buf.rename, opts)
 			end,
 		})
 
