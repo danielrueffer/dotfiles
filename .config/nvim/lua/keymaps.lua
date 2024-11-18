@@ -14,7 +14,7 @@ vim.g.maplocalleader = " "
 map({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 
 -- clear highlights
-map("n", "<esc>", ":nohl<CR>", { desc = "Clear highlights" })
+map("n", "<leader>h", ":nohlsearch<CR>", { desc = "Clear highlights" })
 
 -- save file
 map("n", "<leader>s", "<cmd> w<CR>", { desc = "Save file" })
@@ -54,8 +54,8 @@ map("n", "<Left>", ":vertical resize -2<CR>", { desc = "Resize left" })
 map("n", "<Right>", ":vertical resize +2<CR>", { desc = "Resize right" })
 
 -- windows
-map("n", "<leader>|", "<C-W>v", { desc = "Split window horizontal" })
-map("n", "<leader>-", "<C-W>s", { desc = "Split window vertical" })
+map("n", "<leader>wh", "<C-W>v", { desc = "Split window horizontal" })
+map("n", "<leader>wv", "<C-W>s", { desc = "Split window vertical" })
 map("n", "<leader>we", "<C-w>=", { desc = "Equal split size" })
 map("n", "<leader>ws", ":close<CR>", { desc = "Close split window" })
 
