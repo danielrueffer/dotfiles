@@ -98,3 +98,6 @@ if [ -f '/Users/danielrueffer/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/d
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/danielrueffer/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/danielrueffer/google-cloud-sdk/completion.zsh.inc'; fi
 eval "$($HOME/work/exchangehub-toolbelt/bin/xtb init -)"
+
+# direnv
+eval "$(direnv hook zsh)"
