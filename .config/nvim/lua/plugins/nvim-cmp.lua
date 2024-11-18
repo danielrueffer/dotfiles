@@ -8,7 +8,6 @@ return {
 		"hrsh7th/cmp-cmdline", -- source for vim's command line completions
 		"L3MON4D3/LuaSnip", -- snippet engine
 		"saadparwaiz1/cmp_luasnip", -- for autocompletion
-		"onsails/lspkind.nvim", -- vs-code like pictograms
 		"windwp/nvim-autopairs", -- auto pairs for brackets, quotes, etc.
 	},
 	config = function()
@@ -16,7 +15,6 @@ return {
 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 		local npairs = require("nvim-autopairs")
 		local cmp = require("cmp")
-		local lspkind = require("lspkind")
 		local luasnip = require("luasnip")
 
 		npairs.setup({
