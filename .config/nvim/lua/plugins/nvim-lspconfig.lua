@@ -71,6 +71,7 @@ return {
 		lspconfig.ruby_lsp.setup({
 			capabilities = capabilities,
 			root_dir = lspconfig.util.root_pattern("Gemfile", ".git"),
+			filetypes = { "ruby", "rakefile" },
 			command_path = "~/.rbenv/shims/ruby-lsp",
 		})
 
