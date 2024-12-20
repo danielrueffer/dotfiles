@@ -45,6 +45,7 @@ return {
 				end,
 
 				results_path = "tmp/rspec.output",
+				formatter = "json",
 			}),
 		}
 

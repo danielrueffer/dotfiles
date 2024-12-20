@@ -38,6 +38,8 @@ map("n", "N", "Nzzzv")
 
 -- general
 map("n", "0", "^", { desc = "Jump to first character" })
+map("n", "H", "^", { desc = "Jump to first character" })
+map("n", "L", "%", { desc = "Jump to last character" })
 
 -- keep last yanked when pasting
 map("v", "p", "_dP")
@@ -60,9 +62,9 @@ map("n", "<leader>we", "<C-w>=", { desc = "Equal split size" })
 map("n", "<leader>ws", ":close<CR>", { desc = "Close split window" })
 
 -- buffers
-map("n", "<leader>x", "<cmd>bdelete!<CR>", { desc = "Close buffer" })
-map("n", "H", "<cmd>bprev<CR>", { desc = "Previous buffer" })
-map("n", "L", "<cmd>bnext<CR>", { desc = "Next buffer" })
+-- map("n", "<leader>bd", "<cmd>bdelete!<CR>", { desc = "Close buffer" })
+map("n", "<leader>bp", "<cmd>bprev<CR>", { desc = "Previous buffer" })
+map("n", "<leader>bn", "<cmd>bnext<CR>", { desc = "Next buffer" })
 map("n", "<leader><leader>", "<c-^>", { desc = "Last buffer" })
 
 -- Move text up and down
