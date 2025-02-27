@@ -91,7 +91,7 @@ alias icd="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/"
 # Shell integrations
 eval "$(fzf --zsh)"
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
+export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
 
 # The next line updates PATH for the Google Cloud SDK.
