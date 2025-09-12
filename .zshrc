@@ -10,8 +10,6 @@ if [[ -f "/opt/homebrew/bin/brew" ]] then
   eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
-export EDITOR=nvim
-
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -87,6 +85,8 @@ alias dcrun="docker compose run --rm"
 alias dcdn="docker compose down"
 alias dcrails="docker compose run --rm web bundle exec rails"
 alias icd="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/"
+alias notes="cd /Users/danielrueffer/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/notes"
+alias home="cd /Users/danielrueffer"
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -103,3 +103,5 @@ eval "$($HOME/work/exchangehub-toolbelt/bin/xtb init -)"
 
 # direnv
 eval "$(direnv hook zsh)"
+
+export EDITOR="NVIM_APPNAME=lazyvim nvim"
