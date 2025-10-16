@@ -6,5 +6,15 @@ return {
         prompt = "> /COPILOT_GENERATE\n\nPlease generate specs for my code.",
       },
     },
+    keys = {
+      {
+        "<leader>aa",
+        function()
+          return require("CopilotChat").toggle()
+        end,
+        desc = "Toggle (CopilotChat)",
+        mode = { "n", "v" },
+      },
+    },
   },
 }

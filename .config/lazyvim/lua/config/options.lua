@@ -12,3 +12,4 @@ vim.g.loaded_ruby_provider = 0
 -- Set to "solargraph" to use solargraph instead of ruby_lsp.
 vim.g.lazyvim_ruby_lsp = "ruby_lsp"
 vim.g.lazyvim_ruby_formatter = "rubocop"
+-- vim.lsp.enable("copilot")
