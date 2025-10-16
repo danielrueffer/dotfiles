@@ -8,3 +8,10 @@ vim.keymap.set(
   "<cmd>!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazygit <CR><CR>",
   { desc = "Lazygit" }
 )
+
+vim.keymap.set(
+  "n",
+  "<leader>dd",
+  "<cmd>!tmux new-window -c " .. vim.fn.getcwd() .. " -- lazydocker <CR><CR>",
+  { desc = "Lazydocker" }
+)
