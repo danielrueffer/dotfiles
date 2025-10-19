@@ -9,13 +9,4 @@ return {
       },
     },
   },
-  keys = {
-    {
-      "<leader>ac",
-      function()
-        require("sidekick.cli").toggle()
-      end,
-      desc = "Sidekick Toggle CLI",
-    },
-  },
 }
