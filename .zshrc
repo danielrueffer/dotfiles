@@ -79,11 +79,19 @@ alias ld="lazydocker"
 alias vim="nvim"
 alias v="nvim"
 alias c="clear"
-alias dcbuild="docker compose build"
+
+# Docker aliases
+alias dps="docker ps"
+
+# Docker compose aliases
+alias dc="docker compose"
+alias dcb="docker compose build"
 alias dcup="docker compose up"
 alias dcrun="docker compose run --rm"
 alias dcdn="docker compose down"
 alias dcrails="docker compose run --rm web bundle exec rails"
+
+# Folder shortcuts
 alias icd="cd ~/Library/Mobile\ Documents/com\~apple\~CloudDocs/"
 alias notes="cd /Users/danielrueffer/Library/Mobile\ Documents/iCloud\~md\~obsidian/Documents/notes"
 alias home="cd /Users/danielrueffer"
